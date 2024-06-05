@@ -35,6 +35,12 @@
 	<li><code>pos</code> is <code>-1</code> or a <strong>valid index</strong> in the linked-list.</li>
 </ul>
 
+---
+- Solutions
+	1. Determine if there's cycle in linked list (slow and fast pointed until they met)
+ 	2. set two pointer (one starts at the head one starts at the point of original slow pointer) 
+
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> Can you solve it using <code>O(1)</code> (i.e. constant) memory?</p>
 </div>
+
