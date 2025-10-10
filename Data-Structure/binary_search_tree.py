@@ -64,5 +64,5 @@ if __name__ == "__main__":
 
     # tree.inorder_traversal()
     # tree.preorder_traversal()
-    tree.postorder_traversal()
-    # print(tree.find(2))
+    # tree.postorder_traversal()
+    print(tree.find(2))

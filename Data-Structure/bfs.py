@@ -1,6 +1,7 @@
 
 
-import queue
+# import queue
+from collections import deque
 
 
 class TreeNode:
@@ -24,15 +25,15 @@ r = TreeNode(val=1, left=c1, right=c2)
 
 def bfs_tra(root):
     result = []
-    q = queue.Queue()
-    q.put(root)
-    while q.qsize() > 0:
-        node = q.get()
+    q = deque()
+    q.append(root)
+    while q:
+        node = q.popleft()
         result.append(node.val)
         if node.left != None:
-            q.put(node.left)
+            q.append(node.left)
         if node.right != None:
-            q.put(node.right)
+            q.append(node.right)
     return result
 
 
