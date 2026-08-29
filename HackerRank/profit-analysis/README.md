@@ -17,6 +17,24 @@ Complete the function `getMaxProfit` with the following parameters:
 
 - `long_int`: the sum of a contiguous subarray of size `k` or less that has the largest sum
 
+## Files in this folder
+
+- `main.py`: original solution that returns only the maximum profit
+- `extend.py`: extended version that returns both the maximum profit and the actual index range
+
+`extend.py` uses the same monotonic deque + prefix sum idea as the original solution, but when a better answer is found it also stores:
+
+- `start = dq[0]`
+- `end = r - 1`
+
+This is because `prefix[r] - prefix[l]` corresponds to the subarray `pnl[l:r]`, so the actual inclusive index range is `[l, r - 1]`.
+
+Example return shape from `extend.py`:
+
+```python
+(max_profit, (start_index, end_index))
+```
+
 ## Example
 
 ```text
