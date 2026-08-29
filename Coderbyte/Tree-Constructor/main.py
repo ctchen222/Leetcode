@@ -1,17 +1,20 @@
 def TreeConstructor(strArr):
     parent_of = {} # {chidren: parent}
     children_count = {} # {parent: count}
+    children_of = {}
     nodes = set()
 
     for pair in strArr:
         # extract child, parent
-        child, parent = pair.strip("()").split(",")
+        child, parent = map(int, pair.strip("()").split(","))
         nodes.add(child)
         nodes.add(parent)
 
         # 1. child could only has one parent
         if child in parent_of:
-            return "false"
+            if parent_of[child] != parent:
+                return "false"
+            continue
 
         parent_of[child] = parent
         children_count[parent] = children_count.get(parent, 0) + 1
@@ -20,11 +23,23 @@ def TreeConstructor(strArr):
         if children_count[parent] > 2:
             return "false"
 
+        children_of.setdefault(parent, []).append(child)
 
     # roots should only has one
     roots = [node for node in nodes if node not in parent_of]
-    if len(roots) > 1:
+    if len(roots) != 1:
         return "false"
+
+    visited = set()
+    stack = [roots[0]]
+    while stack:
+        node = stack.pop()
+
+        if node in visited:
+            return "false"
+        
+        visited.add(node)
+        stack.extend(children_of.get(node, []))
     
     return "true"
 
