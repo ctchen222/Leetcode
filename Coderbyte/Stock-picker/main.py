@@ -12,7 +12,7 @@
 # O(n) solution
 def StockPicker(arr):
     if len(arr) < 2:
-        return 0
+        return -1
     
     max_profit = -1
     min_price = arr[0]
